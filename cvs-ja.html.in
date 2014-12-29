@@ -24,37 +24,46 @@
 
 <div id="langswitch"><a href="cvs.html">English</a></div>
 
+<h2><a name="TOC">目次</a></h2>
+<ol>
+<!--   <li><a href="#repository">SKK レポジトリ構成</a> -->
+<!--   <li><a href="#get_cvs">CVS の入手方法</a> -->
+<!--   <li><a href="#get_source">CVS による SKK ソースの入手</a> -->
+<!--   <li><a href="#commit_tag">コミッタのためのガイド</a> -->
+<!--     <ul> -->
+<!--       <li><a href="#account">CVS での開発参加</a> -->
+<!--       <li><a href="#commit">コミット</a> -->
+<!--     </ul> -->
+  <li>開発ツールの変更について
+  <li>git/github.com による開発
+  <li>cvs/openlab.jp による開発
+</ol>
+
+<h2><a name="">1. 開発ツールの変更について</a></h2>
+
 <p>2014年12月、ddskk の開発ツールを cvs から github へ変更しました。<br>
 <a href="http://mail.ring.gr.jp/skk/201412/msg00061.html">http://mail.ring.gr.jp/skk/201412/msg00061.html</a></p>
 
-<p>したがって、下記の記述は古い内容となります。</p>
+<h2><a name="">2. git/github.com による開発</a></h2>
 
-<h2><a name="TOC">目次</a></h2>
-<ul>
-  <li><a href="#repository">SKK レポジトリ構成</a>
-  <li><a href="#get_cvs">CVS の入手方法</a>
-  <li><a href="#get_source">CVS による SKK ソースの入手</a>
-  <li><a href="#commit_tag">コミッタのためのガイド</a>
-    <ul>
-      <li><a href="#account">CVS での開発参加</a>
-      <li><a href="#commit">コミット</a>
-    </ul>
-</ul>
+※ README.git.ja から一部を転載する予定
 
-<h2><a name="repository">SKK レポジトリ構成</a></h2>
+<h2><a name="">3. cvs/openlab.jp による開発</a></h2>
+
+<h3><a name="repository">SKK レポジトリ構成</a></h3>
 
 <pre>
      $CVSROOT(openlab.jp:/circus/cvsroot)
         |
         |
         +-- skk --+-- main (Main distribution -- Emacs Lisp, tutorials, etc)
-                  |
+                  |   ※ github へ変更しました
                   |
                   +-- dic (Dictionaries)
                   |
                   |
                   +-- tools (Dictionary maintenance tools)
-                  |
+                  |   ※ github へ変更しました
                   |
                   +-- skkserv (Dictionary server)
                   |
@@ -65,7 +74,7 @@
                   +-- web (Web page html files)
 </pre>
 
-<h2><a name="get_cvs"><em>CVS の入手方法</em></a></h2>
+<h3><a name="get_cvs"><em>CVS の入手方法</em></a></h3>
 
 <p>CVS は <a href="http://ftp.gnu.org/non-gnu/cvs/">http://ftp.gnu.org/non-gnu/cvs/</a> で配布されています。
 
@@ -86,7 +95,7 @@
 
 <p>なお、Emacs には <a name="pcvs(pcl-cvs)">pcvs (pcl-cvs)</a> というフロントエンドが付属しています。</p>
 
-<h2><a name="get_source"><em>CVS による SKK ソースの入手</em></a></h2>
+<h3><a name="get_source"><em>CVS による SKK ソースの入手</em></a></h3>
 
 <p>ゲストアカウントで openlab.jp の cvs server にログインします。</p>
 
@@ -117,7 +126,7 @@
      % cvs update -dP
 </pre>
 
-<h2><a name="commit_tag"><em>コミッタのためのガイド</em></a></h2>
+<h3><a name="commit_tag"><em>コミッタのためのガイド</em></a></h3>
 
 <h3><a name="account">CVS での開発参加</a></h3>
 
@@ -166,14 +175,14 @@
      % cvs commit -m "あなたのコメントをここに。" skk.el
 </pre>
 
-<div id="footnote-sec"><h2><a name="footnote">脚注</a></h2>
+<div id="footnote-sec"><h3><a name="footnote">脚注</a></h3>
 
-<h3><a name="footnote1">注1</a></h3>
+<h4><a name="footnote1">注1</a></h4>
 
 <p>サーバーの情報は作業ディレクトリ下に記録されるので、作業ディレクトリでCVS コマンド (<kbd>checkout</kbd>, <kbd>update</kbd>, <kbd>commit</kbd> など) を実行すると、自動的に openlab.jp にログインして、それぞれのコマンドを実行します。</p>
 
 
-<h3><a name="footnote2">注2</a></h3>
+<h4><a name="footnote2">注2</a></h4>
 
 <p>~/.cvsrc に</p>
 
@@ -183,7 +192,7 @@
 
 <p>と書いておくと、サーバーとの通信内容が圧縮されます。数字が大きい程圧縮率が高いのですが、圧縮率が高い程サーバの負担が高いので、<kbd>-z3</kbd> ぐらいが丁度良いようです。</p>
 
-<h3><a name="footnote3">注3</a></h3>
+<h4><a name="footnote3">注3</a></h4>
 
 <p>CVS の Emacs 用フロントエンド <a href="#pcvs(pcl-cvs)">pcl-cvs</a> (pcvs) を使う場合、コミットのために <kbd>C</kbd> キー (<kbd>cvs-mode-changelog-commit</kbd>) を押すと ChangeLog から当日コミッタ自身が書いた部分を抜き出して、ログを書く手助けをしてくれます。</p>
 </div>
