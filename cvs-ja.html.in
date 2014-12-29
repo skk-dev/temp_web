@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+  <title>SKK Openlab - 開発</title>
+  <link href="common.css" rel="stylesheet" type="text/css">
+  <link href="index-j.html" rel="index">
+  <link rev="MADE" href="mailto:skk@ring.gr.jp">
+</head>
+<body>
+<div id="globalnav">
+  <ul>
+    <li><a href="index-j.html" name="top">トップ</a>
+    <li><a href="dic-ja.html">SKK 辞書</a> (<a href="dic" title="DownloadDic">ダウンロード</a>, <a href="wiki/wiki.cgi?page=FrontPage">Wiki</a>)
+    <li><a href="ddskk-ja.html">DDSKK</a> (<a href="maintrunk" title="DownloadSKK">ダウンロード</a>)
+    <li><a href="doc-ja.html">ドキュメント</a>
+    <li><a href="ml-ja.html">メーリングリスト</a>
+    <li><a href="cvs-ja.html">開発</a>
+    <li><a href="wiki/wiki.cgi?page=%A5%EA%A5%F3%A5%AF%BD%B8">リンク</a>
+  </ul>
+</div>
+
+<h1><a name="topp">SKK Openlab での開発</a></h1>
+
+<div id="langswitch"><a href="cvs.html">English</a></div>
+
+<p>2014年12月、ddskk の開発ツールを cvs から github へ変更しました。<br>
+<a href="http://mail.ring.gr.jp/skk/201412/msg00061.html">http://mail.ring.gr.jp/skk/201412/msg00061.html</a></p>
+
+<p>したがって、下記の記述は古い内容となります。</p>
+
+<h2><a name="TOC">目次</a></h2>
+<ul>
+  <li><a href="#repository">SKK レポジトリ構成</a>
+  <li><a href="#get_cvs">CVS の入手方法</a>
+  <li><a href="#get_source">CVS による SKK ソースの入手</a>
+  <li><a href="#commit_tag">コミッタのためのガイド</a>
+    <ul>
+      <li><a href="#account">CVS での開発参加</a>
+      <li><a href="#commit">コミット</a>
+    </ul>
+</ul>
+
+<h2><a name="repository">SKK レポジトリ構成</a></h2>
+
+<pre>
+     $CVSROOT(openlab.jp:/circus/cvsroot)
+        |
+        |
+        +-- skk --+-- main (Main distribution -- Emacs Lisp, tutorials, etc)
+                  |
+                  |
+                  +-- dic (Dictionaries)
+                  |
+                  |
+                  +-- tools (Dictionary maintenance tools)
+                  |
+                  |
+                  +-- skkserv (Dictionary server)
+                  |
+                  |
+                  +-- pySKK (SKK related libraries using python)
+                  |
+                  |
+                  +-- web (Web page html files)
+</pre>
+
+<h2><a name="get_cvs"><em>CVS の入手方法</em></a></h2>
+
+<p>CVS は <a href="http://ftp.gnu.org/non-gnu/cvs/">http://ftp.gnu.org/non-gnu/cvs/</a> で配布されています。
+
+<p>Windows で CVS を利用し開発に参加される方は、cygwin 環境を利用して下さい。詳細については <a href="cvswin-ja.html">CVS on Windows</a> をご覧下さい。</p>
+
+<p>CVS に関する情報は</p>
+
+<ul>
+<li><a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a></li>
+</ul>
+
+<p>から入手可能です。また、CVS に関する日本語の情報として、以下のようなページがあります。</p>
+
+<ul>
+<li><a href="http://vox.nishimotz.com/cvs/cvs.html">http://vox.nishimotz.com/cvs/cvs.html</a>
+  <li><a href="http://www.itojun.org/hack/cvs/tut-kernel.html">http://www.itojun.org/hack/cvs/tut-kernel.html</a>
+</ul>
+
+<p>なお、Emacs には <a name="pcvs(pcl-cvs)">pcvs (pcl-cvs)</a> というフロントエンドが付属しています。</p>
+
+<h2><a name="get_source"><em>CVS による SKK ソースの入手</em></a></h2>
+
+<p>ゲストアカウントで openlab.jp の cvs server にログインします。</p>
+
+<pre>
+     % cvs -d :pserver:guest@openlab.jp:/circus/cvsroot login
+</pre>
+
+<p>パスワードの入力を促すプロンプトが出るので、パスワードとして <kbd>guest</kbd> を入れ、<kbd>RET</kbd> しましょう。</p>
+
+<pre>
+     CVS password: guest [RET]
+</pre>
+
+<p>~/.cvspass というファイルにパスワードが記録され、次からは入力不要になります。 <span id="footnote-1"><a href="#footnote1">(*注1)</a></span></p>
+
+<p>次に DDSKK のソースを取得します (このファイルを作業コピーといいます)。 <span id="footnote-2"><a href="#footnote2">(*注2)</a></span></p>
+
+<pre>
+     % cvs -d :pserver:guest@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+
+<p>カレントディレクトリの下にできる skk/main (作業ディレクトリ) にコピーが作成されます。</p>
+
+<p>手元のソースを最新に更新するには作業ディレクトリに移動して<kbd>cvs update</kbd>を実行します。</p>
+
+<pre>
+     % cd skk/main
+     % cvs update -dP
+</pre>
+
+<h2><a name="commit_tag"><em>コミッタのためのガイド</em></a></h2>
+
+<h3><a name="account">CVS での開発参加</a></h3>
+
+<p>openlab.jp に SSH2 公開鍵 (OpenSSH) を登録することで開発に参加できます。まず SSH2 公開鍵 (OpenSSH) を <a href="mailto:skk-owner@ring.gr.jp">skk-owner@ring.gr.jp</a> 宛てに送付して下さい。登録完了の通知をお送りします。</p>
+
+<p>SSH 経由のアクセスにおいては <kbd>cvs login</kbd> は必要ありません。skk-cvs というアカウントをコミッタ全員共通で使用します。ソースを取得するには以下のコマンドを実行します。</p>
+
+<pre>
+     % cvs -d:ext:skk-cvs@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+
+<p>また、取得済みのソースを最新に更新するには作業ディレクトリで以下を実行します。</p>
+
+<pre>
+     % cvs update -dP
+</pre>
+
+<h3><a name="commit">コミット</a></h3>
+
+<p>下記の手順を踏んでコミットして下さいね。</p>
+
+<ul>
+
+  <li>まず作業ディレクトリのソースを自分の環境でコンパイル &amp; インストールします。</li>
+
+  <li>動作確認をして下さい。
+
+    <ul>
+      <li> 一度、SKK を起動 &amp; 終了して問題がないことを確認します。</li>
+      <li> 同じことを <kbd>emacs -Q</kbd> 下でもう一度確認します (できれば空の ~/.skk で)。</li>
+    </ul></li>
+
+  <li>変更の要点をその SKK で書きます。</li>
+
+  <li>その間も問題がなければ、作業ディレクトリにて <kbd>cvs commit</kbd> します。</li>
+
+  <li>問題なければ書いた変更の要点を <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a> に投稿して下さい。</li>
+
+  <li>ChangeLog の更新をお忘れなく。英語で書いていますが、英語が苦痛なら日本語で書いても全然問題ありません。 <span id="footnote-3"><a href="#footnote3">(*注3)</a></span></li>
+
+</ul>
+
+<pre>
+     % cd skk/main
+     % cvs commit -m "Update." ChangeLog
+     % cvs commit -m "あなたのコメントをここに。" skk.el
+</pre>
+
+<div id="footnote-sec"><h2><a name="footnote">脚注</a></h2>
+
+<h3><a name="footnote1">注1</a></h3>
+
+<p>サーバーの情報は作業ディレクトリ下に記録されるので、作業ディレクトリでCVS コマンド (<kbd>checkout</kbd>, <kbd>update</kbd>, <kbd>commit</kbd> など) を実行すると、自動的に openlab.jp にログインして、それぞれのコマンドを実行します。</p>
+
+
+<h3><a name="footnote2">注2</a></h3>
+
+<p>~/.cvsrc に</p>
+
+<pre>
+     cvs -z3
+</pre>
+
+<p>と書いておくと、サーバーとの通信内容が圧縮されます。数字が大きい程圧縮率が高いのですが、圧縮率が高い程サーバの負担が高いので、<kbd>-z3</kbd> ぐらいが丁度良いようです。</p>
+
+<h3><a name="footnote3">注3</a></h3>
+
+<p>CVS の Emacs 用フロントエンド <a href="#pcvs(pcl-cvs)">pcl-cvs</a> (pcvs) を使う場合、コミットのために <kbd>C</kbd> キー (<kbd>cvs-mode-changelog-commit</kbd>) を押すと ChangeLog から当日コミッタ自身が書いた部分を抜き出して、ログを書く手助けをしてくれます。</p>
+</div>
+
+<div id="move"><a href="#top">目次へ</a></div>
+
+<div id="mailto">mailto: <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a></div>
+<div id="modtime">Last Modified: $Date: 2014/12/24 06:15:27 $</div>
+</body>
+</html>

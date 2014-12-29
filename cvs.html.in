@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>SKK Openlab - Development</title>
+  <link href="common.css" rel="stylesheet" type="text/css">
+  <link href="index.html" rel="index">
+  <link rev="MADE" href="mailto:skk@ring.gr.jp">
+</head>
+<body>
+<div id="globalnav">
+  <ul>
+    <li><a href="index.html" name="top">Top</a>
+    <li><a href="dic.html">SKK dictionaries</a> (<a href="dic" title="DownloadDic">Download</a>)
+    <li><a href="ddskk.html">DDSKK</a> (<a href="maintrunk" title="DownloadSKK">Download</a>)
+    <li><a href="doc.html">Documents</a>
+    <li><a href="ml.html">Mailing list</a>
+    <li><a href="cvs.html">Development</a>
+    <li><a href="links.html">Links</a>
+  </ul>
+</div>
+
+<h1>CVS start guide for SKK developers</h1>
+
+<div id="langswitch"><a href="cvs-ja.html">Japanese</a></div>
+
+<p>These are notes on how to get read and/or write access to SKK source repository at Ring OpenLab CVS server.  If you find something wrong, or know a better way to do that, please let us know.</p>
+
+<h2><a name="TOC">Table of Contents</a></h2>
+<ul>
+  <li><a href="#repository">CVS repository tree</a>
+  <li><a href="#get_cvs">How to get CVS</a>
+  <li><a href="#get_source">How to obtain SKK CVS sources</a>
+  <li><a href="#commit_tag">How to check files into the repository (commit, tag)</a>
+    <ul>
+      <li><a href="#account">How to get commit (R/W) access to SKK CVS repositories</a>
+      <li><a href="#commit">Commit</a>
+    </ul>
+</ul>
+
+<h2><a name="repository">CVS repository tree</a></h2>
+
+<pre>
+     $CVSROOT(openlab.jp:/circus/cvsroot)
+        |
+        |
+        +-- skk --+-- main (Main distribution -- Emacs Lisp, tutorials, etc)
+                  |
+                  |
+                  +-- dic (Dictionaries)
+                  |
+                  |
+                  +-- tools (Dictionary maintenance tools)
+                  |
+                  |
+                  +-- skkserv (Dictionary server)
+                  |
+                  |
+                  +-- pySKK (SKK related libraries using python)
+                  |
+                  |
+                  +-- web (Web page html files)
+</pre>
+
+<h2><a name="get_cvs">How to get CVS</a></h2>
+
+<p>CVS is distributed at</p>
+
+<p><a href="http://ftp.gnu.org/non-gnu/cvs/">http://ftp.gnu.org/non-gnu/cvs/</a></p>
+
+<p>If you want to know more about CVS, visit the following site.</p>
+
+<p><a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a></p>
+
+<p>Do you know pcvs (pcl-cvs)?  It's a GNU Emacs front-end to CVS.  pcvs is included in Emacs 21 distribution.</p>
+
+<h2><a name="get_source">Obtaining SKK CVS sources</a></h2>
+
+<p>First, you need to do <kbd>login</kbd> just once as a user <kbd>guest</kbd> (unless you have commit access).</p>
+
+<pre>
+     % cvs -d :pserver:guest@openlab.jp:/circus/cvsroot login
+</pre>
+
+<p>When prompted, type <kbd>guest</kbd> as a CVS password.</p>
+
+<pre>
+     CVS password: guest [RET]
+</pre>
+
+<p>File ~/.cvspass will hold your encrypted passwords. <span id="footnote-1"><a href="#footnote1">(*1)</a></span></p>
+
+<p>To get your own working copy of the sources, use <kbd>checkout</kbd> command. <span id="footnote-2"><a href="#footnote2">(*2)</a></span>  To checkout sources in the trunk:</p>
+
+<pre>
+     % cvs -d :pserver:guest@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+
+<p>The working copy will be placed in `skk/main' directory.</p>
+
+<pre>
+     % cd skk/main
+</pre>
+
+<p>Now you can type <kbd>make</kbd>.  You can hack files too, but need to get commit access to SKK CVS repositories before committing your changes.</p>
+
+<p> You can use <kbd>update</kbd> command from within your working directory to bring work tree in sync with the repository.  Since your working copy remembers the root of the repository (i.e. openlab.jp:/circus/cvsroot), you can type the following:</p>
+
+<pre>
+     % cd skk/main
+     % cvs update -dP
+</pre>
+
+<h2><a name="commit_tag">How to check files into the repository (commit)</a></h2>
+
+<h3><a name="account">How to get commit (R/W) access to SKK CVS repositories</a></h3>
+
+<p>If you want a right to `commit' to SKK CVS repositories, write e-mail to <a href="mailto:skk-owner@ring.gr.jp">skk-owner@ring.gr.jp</a> with ssh2 public key generated with OpenSSH.</p>
+
+<p>There's no need to login when you access the cvs server via ssh.  All committers share a unique account called skk-cvs.  You can checkout sources by the following command.</p>
+
+<pre>
+     % cvs -d:ext:skk-cvs@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+
+<p>Similarly You can update your working sources with the following command.</p>
+
+<pre>
+     % cvs update -dP
+</pre>
+
+<h3><a name="commit">Commit</a></h3>
+
+<p>Please follow the following procedure before you commit changes.</p>
+
+<ul>
+
+  <li>Make sure your working copy is compiled and installed without problem.</li>
+
+  <li>Make sure the installed SKK works in simple tasks (at least starts and exits normally).</li>
+
+  <li>Write e-mail to <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a> and tell briefly what changes you have made using the modified revision of SKK.</li>
+
+  <li>Update the ChangeLog file in English (or in Japanese if you like) <span id="footnote-3"><a href="#footnote3">(*3)</a></span>, and do <kbd>commit</kbd>.</li>
+
+</ul>
+
+<pre>
+     $ cd skk/main
+     $ cvs commit -m "Update." ChangeLog
+     $ cvs commit -m "write about your changes." skk.el
+</pre>
+
+<h2><a name="footnote"><em>Footnotes</em></a></h2>
+
+<div id="footnote-sec"><h3><a name="footnote1">*1</a></h3>
+
+<p>Your working copy has a directory called `CVS', which is used internally by CVS.  This holds information of the user name, the root of the repository (i.e. openlab.jp:/circus/cvsroot), the name of the repository, etc. <a href="#footnote3">(*3)</a>  Usually you can set the `$CVSROOT' environment variable to an absolute path to the root of the repository, but the <kbd>-d</kbd> option and the `CVS/Root' file both override the `$CVSROOT' environment variable.  If <kbd>-d</kbd> option differs from `CVS/Root', the former is used.</p>
+
+<h3><a name="footnote2">*2</a></h3>
+
+<p>You can write in ~/.cvsrc</p>
+<pre>
+     cvs -z3
+</pre>
+
+<p>The <kbd>-z3</kbd> option enables compression during transit.  Digit right after <kbd>z</kbd> represents compression rate, and <kbd>-z9</kbd> means highest.  However, <kbd>-z3</kbd> may be better as <kbd>-z9</kbd> forces a significant overhead to pserver.</p>
+
+<h3><a name="footnote3">*3</a></h3>
+
+<p>In pcl-cvs, a GNU Emacs front end to CVS, press <kbd>C</kbd> (<kbd>cvs-mode-changelog-commit</kbd>) and it tries to provide appropriate default log messages by looking at the `ChangeLog's. </p>
+</div>
+
+<div id="move"><a href="#top">Move to Table of Contents</a></div>
+
+<div id="mailto">mailto: <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a></div>
+<div id="modtime">Last Modified: $Date: 2010/11/09 16:51:09 $</div>
+</body>
+</html>
