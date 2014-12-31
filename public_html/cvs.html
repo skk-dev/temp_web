@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SKK Openlab - Developmen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="common.css" rel="stylesheet" type="text/css">
+        <link href="index-j.html" rel="index">
+        <link rev="MADE" href="mailto:skk@ring.gr.jp">
+    </head>
+
+    <body>
+        <header>
+            <div id="globalnav">
+                <ul>
+                    <li><a href="index-j.html" name="top">Top</a>
+                    <li><a href="dic-ja.html">SKK dictionaries</a> 
+                        (<a href="dic" title="DownloadDic">Download</a>, 
+                        <a href="wiki/wiki.cgi?page=FrontPage">Wiki</a>)
+                    <li><a href="ddskk-ja.html">DDSKK</a>
+                        (<a href="maintrunk" title="DownloadSKK">Download</a>)
+                    <li><a href="doc-ja.html">Documents</a>
+                    <li><a href="ml-ja.html">Mailing list</a>
+                    <li><a href="cvs-ja.html">Development</a>
+                    <li><a href="wiki/wiki.cgi?page=%A5%EA%A5%F3%A5%AF%BD%B8">Links</a>
+                </ul>
+            </div>
+        </header>
+
+        <article>
+            <h1><a name="topp">Start guide for SKK developers</a></h1>
+            <div id="langswitch"><a href="cvs-ja.html">Japanese</a></div>
+            <h2><a name="TOC">Table of Contents</a></h2>
+            <ol>
+                <!-- <li><a href="#repository">SKK レポジトリ構成</a> -->
+                <!-- <li><a href="#get_cvs">CVS の入手方法</a> -->
+                <!-- <li><a href="#get_source">CVS による SKK ソースの入手</a> -->
+                <!-- <li><a href="#commit_tag">コミッタのためのガイド</a> -->
+                <!-- <ul> -->
+                <!-- <li><a href="#account">CVS での開発参加</a> -->
+                <!-- <li><a href="#commit">コミット</a> -->
+                <!-- </ul> -->
+                <li><a href="#introduction">Environment for developing device transition</a>
+                <li><a href="#dev_git">Development on git/github.com</a>
+                <li><a href="#dev_cvs">Development on cvs/openlab.jp</a>
+            </ol>
+
+            <h2><a name="introduction">1. Environment for developing device transition</a></h2>
+            <div>
+                <p>On Decenmber 2014, the devoping device for ddskk and skktools was transited from 
+                    cvs to github.</p>
+                <ul>
+                    <li><a href="http://mail.ring.gr.jp/skk/201412/msg00012.html">
+                            http://mail.ring.gr.jp/skk/201412/msg00012.html</a>
+                    <li><a href="http://mail.ring.gr.jp/skk/201412/msg00061.html">
+                            http://mail.ring.gr.jp/skk/201412/msg00061.html</a>
+                </ul>
+            </div>
+
+            <h2><a name="dev_git">2. Development on git/github.com</a></h2>
+            <div>
+                <p>ddskk and skktools are developed on github.</p>
+                <p>The working flow is written in following document;<br>
+                    Working flow for ddskk develop on GitHub 
+                    (<a href="https://github.com/skk-dev/ddskk/blob/master/READMEs/README.git.ja.org">
+                        https://github.com/skk-dev/ddskk/blob/master/READMEs/README.git.ja.org</a>) </p>
+            </div>
+
+            <h3><a name="git-repository">2.1. Repository structure of SKK on GitHub</a></h3>
+            <div>
+                <p>The repository of DDSKK on GitHub is formed as follows.</p>
+                <p>The repository of <em>upstream</em> and <em>origin</em> are consist on GitHub server, and dealed through WEB brouser.</p>
+                <p>Conversely, <em>local</em> is on your PC, and can be switched using <em>git checkout (branch-name)</em>.
+                    The modification in each branch is not influenced to other branches without git command.</p>
+                <p><img type="image/svg+xml" src="branch_en.svg"></img></p>
+            </div>
+
+            <h3><a name="get_git"></a>2.2. Getting git (on UN*X)</h3>
+            <div>
+                <p>On your UN*X like enviroment, git may not be installed.</p>
+                <p>For the setteing of git, refer <a href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git">http://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a>.</p>
+            </div>
+
+            <h3><a name="get_git_win">2.3. Getting git (on Windows)</a></h3>
+            <div>
+                <p>Get Git for Windows from <a href="https://msysgit.github.io/">https://msysgit.github.io/</a></p>
+                <p> Uncheck [Windows Explorer integration] and [Associate .sh files to be run with Bash]
+                    on Select Components window.</p>
+                <p> DDSKK distribution include Windows batch file, therefore, 
+                    to keep both LF and CRLF as newline character,
+                    check [Checkout as-is, commit as-is] on Configuring the line ending conversions window.</p>
+            </div>
+            <div>
+                <p>Again, you can use cygwin on Windows enviroment same as  cvs.</p>
+                <p>Not that the home directories of commandline shell are different bitween cygwin and  Git for Windows above.</p>
+                <p>The home directories are below when your login ID is given as  LOGINID.</p>
+                <ul>
+                    <li>Git for Windows:  c:\Users\LOGINID\</li>
+                    <li>cygwin: c:\cygwin\home\LOGINID\   (or  c:\cygwin64\home\LOGINID\  </li>
+                </ul>
+            </div>
+
+            <h3><a name="get_source_from_git">2.4. Getting source code through git</a></h3>
+            <div>
+                <p>Simply, you can download as clone of DDSKK;</p>
+                <pre>
+% git clone https://github.com/skk-dev/ddskk
+                </pre>
+                <p>To join to our development, see "Working flow for ddskk develop on GitHub."</p>
+                <p>To use GitHub you must get account of <a href="https://github.com">https://github.com</a>.
+                The detailes are shown on this site.</p>
+            </div>
+
+            <h2><a name="dev_cvs">3. Development on cvs/openlab.jp</a></h2>
+            <div>
+                <p>Except main (=> skk-dev/ddskk) and tools (=> skk-dev/skktools), 
+                    the distributions are not different before introduction of git system.
+                    And main and  tools will be got reflected to cvs on release.</p>    
+            </div>
+
+            <h3><a name="repository">3.1. CVS repository tree</a></h3>
+            <div>
+                <p><img type="image/svg+xml" src="cvs_en.svg"></img></p>
+            </div>
+
+            <h3><a name="get_cvs">3.2. How to get CVS</a></h3>
+            <div>
+                <p>CVS is distributed at</p>
+<p><a href="http://ftp.gnu.org/non-gnu/cvs/">http://ftp.gnu.org/non-gnu/cvs/</a></p>
+<p>If you want to know more about CVS, visit the following site.</p>
+<p><a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a></p>
+<p>Do you know pcvs (pcl-cvs)? It's a GNU Emacs front-end to CVS. pcvs is included in Emacs 21 distribution.</p>
+               
+            </div>
+
+            <h3><a name="get_source">3.3. How to get CVS</a></h3>
+            <div>
+<p>CVS is distributed at</p>
+<p><a href="http://ftp.gnu.org/non-gnu/cvs/">http://ftp.gnu.org/non-gnu/cvs/</a></p>
+<p>If you want to know more about CVS, visit the following site.</p>
+<p><a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a></p>
+<p>Do you know pcvs (pcl-cvs)? It's a GNU Emacs front-end to CVS. pcvs is included in Emacs 21 distribution.</p>
+<h2><a name="get_source">Obtaining SKK CVS sources</a></h2>
+<p>First, you need to do <kbd>login</kbd> just once as a user <kbd>guest</kbd> (unless you have commit access).</p>
+<pre>
+% cvs -d :pserver:guest@openlab.jp:/circus/cvsroot login
+</pre>
+<p>When prompted, type <kbd>guest</kbd> as a CVS password.</p>
+<pre>
+CVS password: guest [RET]
+</pre>
+<p>File ~/.cvspass will hold your encrypted passwords. <span id="footnote-1"><a href="#footnote1">(*1)</a></span></p>
+<p>To get your own working copy of the sources, use <kbd>checkout</kbd> command. <span id="footnote-2"><a href="#footnote2">(*2)</a></span> To checkout sources in the trunk:</p>
+<pre>
+% cvs -d :pserver:guest@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+<p>The working copy will be placed in `skk/main' directory.</p>
+<pre>
+% cd skk/main
+</pre>
+<p>Now you can type <kbd>make</kbd>. You can hack files too, but need to get commit access to SKK CVS repositories before committing your changes.</p>
+<p> You can use <kbd>update</kbd> command from within your working directory to bring work tree in sync with the repository. Since your working copy remembers the root of the repository (i.e. openlab.jp:/circus/cvsroot), you can type the following:</p>
+<pre>
+% cd skk/main
+% cvs update -dP
+</pre>
+            </div>
+
+            <h3><a name="commit_tag">3.4. How to check files into the repository (commit)</a></h3>
+
+            <h4><a name="account">3.4.1. How to get commit (R/W) access to SKK CVS repositories</a></h4>
+            <div>
+<p>If you want a right to `commit' to SKK CVS repositories, write e-mail to <a href="mailto:skk-owner@ring.gr.jp">skk-owner@ring.gr.jp</a> with ssh2 public key generated with OpenSSH.</p>
+<p>There's no need to login when you access the cvs server via ssh. All committers share a unique account called skk-cvs. You can checkout sources by the following command.</p>
+<pre>
+% cvs -d:ext:skk-cvs@openlab.jp:/circus/cvsroot checkout skk/main
+</pre>
+<p>Similarly You can update your working sources with the following command.</p>
+<pre>
+% cvs update -dP
+</pre>
+            </div>
+
+            <h4><a name="commit">3.4.2. Commit</a></h4>
+            <div>
+<p>Please follow the following procedure before you commit changes.</p>
+<ul>
+<li>Make sure your working copy is compiled and installed without problem.</li>
+<li>Make sure the installed SKK works in simple tasks (at least starts and exits normally).</li>
+<li>Write e-mail to <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a> and tell briefly what changes you have made using the modified revision of SKK.</li>
+<li>Update the ChangeLog file in English (or in Japanese if you like) <span id="footnote-3"><a href="#footnote3">(*3)</a></span>, and do <kbd>commit</kbd>.</li>
+</ul>
+<pre>
+$ cd skk/main
+$ cvs commit -m "Update." ChangeLog
+$ cvs commit -m "write about your changes." skk.el
+</pre>
+            </div>
+
+            <div id="footnote-sec">
+                <h4><a name="footnote"><em>Footnotes</em></a></h4>
+
+                <h5><a name="footnote1">*1</a></h5>
+
+                <p>Your working copy has a directory called `CVS', which is used internally by CVS. This holds information of the user name, the root of the repository (i.e. openlab.jp:/circus/cvsroot), the name of the repository, etc. <a href="#footnote3">(*3)</a> Usually you can set the `$CVSROOT' environment variable to an absolute path to the root of the repository, but the <kbd>-d</kbd> option and the `CVS/Root' file both override the `$CVSROOT' environment variable. If <kbd>-d</kbd> option differs from `CVS/Root', the former is used.</p>
+
+                <h5><a name="footnote2">*2</a></h5>
+
+<p>You can write in ~/.cvsrc</p>
+<pre>
+cvs -z3
+</pre>
+<p>The <kbd>-z3</kbd> option enables compression during transit. Digit right after <kbd>z</kbd> represents compression rate, and <kbd>-z9</kbd> means highest. However, <kbd>-z3</kbd> may be better as <kbd>-z9</kbd> forces a significant overhead to pserver.</p>
+                
+            <h5><a name="footnote3">*3</a></h5>
+
+<p>In pcl-cvs, a GNU Emacs front end to CVS, press <kbd>C</kbd> (<kbd>cvs-mode-changelog-commit</kbd>) and it tries to provide appropriate default log messages by looking at the `ChangeLog's. </p>
+            </div>
+
+            <div id="move"><a href="#top">Move to Table of Contents</a></div>
+
+        </article>
+
+        <footer>
+            <div id="mailto">mailto: <a href="mailto:skk@ring.gr.jp">skk@ring.gr.jp</a></div>
+            <div id="modtime">Last Modified: $Date: 2014/12/24 06:15:27 $</div>            
+        </footer>
+
+    </body>
+</html>

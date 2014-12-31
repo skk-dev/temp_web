@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 13.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+     y="0px" width="547.446px" height="520.885px" viewBox="0 0 547.446 520.885" enable-background="new 0 0 547.446 520.885"
+     xml:space="preserve">
+<rect x="0.4" y="0.4" fill="none" stroke="#000000" stroke-width="0.8" width="208" height="62.855"/>
+<text transform="matrix(1 0 0 1 7.2549 27.4023)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">upstream</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; https://github.com/skk-dev/ddskk</tspan>
+</text>
+<g>
+	<rect x="276.668" y="0.4" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<g>
+		<text transform="matrix(1 0 0 1 284.8623 27.4019)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">origin (masterブランチ)</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; git@github.com:YOURACCOUNT/ddskk.git</tspan>
+</text>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 220.7441 22.9287)" font-family="'CairoFont-0-0'" font-size="14">(fork)</text>
+<text transform="matrix(1 0 0 1 307.416 110.9126)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git clone git@github.com:YOURACCOUNT/ddskk.git</tspan>
+</text>
+<text transform="matrix(1 0 0 1 73.4575 200.0718)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git pull upstream master:master</tspan>
+</text>
+<g>
+	<rect x="276.668" y="152.81" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<text transform="matrix(1 0 0 1 284.8623 179.9844)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">local (masterブランチ)</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; 手元の PC</tspan>
+</text>
+</g>
+<text transform="matrix(1 0 0 1 307.416 248.9653)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git branch REFACTOR</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="10">$ git checkout REFACTOR</tspan>
+<tspan x="0" y="28" font-family="'CairoFont-0-0'" font-size="10"> (REFACTORは例としてつけた名称です)</tspan>
+</text>
+<text transform="matrix(1 0 0 1 307.1875 415.5288)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git push origin REFACTOR:REFACTOR</tspan>
+</text>
+<g>
+	<rect x="276.668" y="457.63" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.854"/>
+	<text transform="matrix(1 0 0 1 284.8623 485.3267)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">origin (REFACTORブランチ)</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; git@github.com:YOURACCOUNT/ddskk.git</tspan>
+</text>
+</g>
+<text transform="matrix(1 0 0 1 114.6455 507.1108)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="14">(pull-request) </tspan>
+</text>
+<g>
+	<line fill="none" stroke="#000000" x1="208.4" y1="31.993" x2="270.139" y2="31.993"/>
+	<polygon points="277.199,31.993 267.25,36.058 269.611,31.993 267.25,27.928 	"/>
+</g>
+<g>
+	<polyline fill="none" stroke="#000000" points="270.139,181.493 70.337,181.493 70.337,63.255 	"/>
+	<polygon points="277.199,181.493 267.25,185.558 269.611,181.493 267.25,177.428 	"/>
+</g>
+<g>
+	<polyline fill="none" stroke="#000000" points="37.584,70.673 37.584,487.009 276.668,487.009 	"/>
+	<polygon points="37.584,63.612 33.52,73.562 37.584,71.2 41.649,73.562 	"/>
+</g>
+<g>
+	<line fill="none" stroke="#000000" x1="296.778" y1="63.549" x2="296.778" y2="145.75"/>
+	<polygon points="296.778,152.81 292.714,142.861 296.778,145.222 300.843,142.861 	"/>
+</g>
+<g>
+	<line fill="none" stroke="#000000" x1="296.778" y1="215.255" x2="296.778" y2="298.159"/>
+	<polygon points="296.778,305.22 292.714,295.271 296.778,297.632 300.843,295.271 	"/>
+</g>
+<g>
+	<line fill="none" stroke="#000000" x1="296.778" y1="368.075" x2="296.778" y2="450.57"/>
+	<polygon points="296.778,457.63 292.714,447.681 296.778,450.042 300.843,447.681 	"/>
+</g>
+<g>
+	<rect x="276.668" y="305.22" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<text transform="matrix(1 0 0 1 284.8623 325.019)">
+<tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">local (REFACTORブランチ)</tspan>
+<tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11"> 改良作業はここで行う</tspan>
+<tspan x="0" y="28" font-family="'CairoFont-0-0'" font-size="11"> 改良後 git add -u &amp;&amp; git commit </tspan>
+</text>
+</g>
+</svg>
