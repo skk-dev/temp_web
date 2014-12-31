@@ -34,9 +34,9 @@
 <!--       <li><a href="#account">CVS での開発参加</a> -->
 <!--       <li><a href="#commit">コミット</a> -->
 <!--     </ul> -->
-  <li>開発ツールの変更について
-  <li>git/github.com による開発
-  <li>cvs/openlab.jp による開発
+  <li><a href="#introduction">開発ツールの変更について</a>
+  <li><a href="#dev_git">git/github.com による開発</a>
+  <li><a href="#dev_cvs">cvs/openlab.jp による開発</a>
 </ol>
 
 <h2><a name="introduction">1. 開発ツールの変更について</a></h2>
@@ -51,18 +51,19 @@
 
 <p>ddskk 及び skktools は github を利用して開発しています。</p>
 
-※ README.git.ja から一部を転載する予定
+<p>開発の流れなどは、次のドキュメントを参考にしてください。<br>
+  GitHub による開発の流れについて (<a href="https://github.com/skk-dev/ddskk/blob/master/READMEs/README.git.ja.org">https://github.com/skk-dev/ddskk/blob/master/READMEs/README.git.ja.org</a>) </p>
 
 <h3><a name="git-repository">2.1. SKK git レポジトリ構成</a></h3>
 
-<p>githubで開発を行う際のレポジトリ構成は以下のようになっています。</p>
-<p>upstream および origin は github のサーバ上にあるレポジトリとなっていて、WEB上で操作をします。</p>
+<p>github で開発を行う際のレポジトリは、以下のような構成になっています。</p>
+<p>upstream および origin は github のサーバ上にあるレポジトリとなっていて、おもに WEB ブラウザを経由して操作をします。</p>
 <p>一方で local は手元の PC 上のレポジトリとなっていて、git checkout (ブランチ名) でブランチを切り替えることができます。
 ブランチの中で行った改変は、git コマンドを使用しない限り他のブランチの内容には影響しません。</p>
 
 <pre>
    +------------------------------------- +  (fork)   +------------------------------------------+
-   | upstream                             | --------> | origin (mastarブランチ)                   |
+   | upstream                             | --------> | origin (masterブランチ)                   |
    |  -> https://github.com/skk-dev/ddskk |           |  -> git@github.com:YOURACCOUNT/ddskk.git |
    +--------------------------------------+           +------------------------------------------+
                 ^    |                                                            |
@@ -71,7 +72,7 @@
                 |    |                                                            |
                 |    |                                                            V
                 |    |                                    +-----------------------------------+
-                |    +----------------------------------> | local   (mastarブランチ)           |      
+                |    +----------------------------------> | local   (masterブランチ)           |      
                 |     $ git pull upstream master:master   |   ->   手元の PC                   |
                 |                                         +-----------------------------------+
                 |                                                |
@@ -116,11 +117,11 @@
      % git clone https://github.com/skk-dev/ddskk
 </pre>
 
-* 開発者向けの記述は README.git.ja から一部を転載
+<p>開発に参加される方は、前掲「GitHub による開発の流れについて」をご覧ください。</p>
 
 <h2><a name="dev_cvs">3. cvs/openlab.jp による開発</a></h2>
 
-<p>ddskk (main) 及び skktools 以外は、従来と変わりません。また、ddskk (main) 及び skktools についてもリリース時には cvs に反映する予定です。</p>
+<p>main (=> skk-dev/ddskk) 及び tools (=> skk-dev/skktools) 以外は、従来と変わりません。また、main 及び tools についても、リリース時には cvs に反映する予定です。</p>
 
 <h3><a name="repository">3.1. SKK cvs レポジトリ構成</a></h3>
 
@@ -128,13 +129,13 @@
      $CVSROOT(openlab.jp:/circus/cvsroot)
         |
         |
-        +-- skk --+-- main (Main distribution -- Emacs Lisp, tutorials, etc)
+        +-- skk --+-- <strike>main (Main distribution -- Emacs Lisp, tutorials, etc)</strike>
                   |   ※ github へ変更しました
                   |
                   +-- dic (Dictionaries)
                   |
                   |
-                  +-- tools (Dictionary maintenance tools)
+                  +-- <strike>tools (Dictionary maintenance tools)</strike>
                   |   ※ github へ変更しました
                   |
                   +-- skkserv (Dictionary server)
