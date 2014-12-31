@@ -55,7 +55,45 @@
 
 <h3><a name="git-repository">2.1. SKK git レポジトリ構成</a></h3>
 
-* upstream, origin, local の相対関係を簡単に図示する
+<p>githubで開発を行う際のレポジトリ構成は以下のようになっています。</p>
+<p>upstream および origin は github のサーバ上にあるレポジトリとなっていて、WEB上で操作をします。</p>
+<p>一方で local は手元の PC 上のレポジトリとなっていて、git checkout (ブランチ名) でブランチを切り替えることができます。
+ブランチの中で行った改変は、git コマンドを使用しない限り他のブランチの内容には影響しません。</p>
+
+<pre>
+   +------------------------------------- +  (fork)   +------------------------------------------+
+   | upstream                             | --------> | origin (mastarブランチ)                   |
+   |  -> https://github.com/skk-dev/ddskk |           |  -> git@github.com:YOURACCOUNT/ddskk.git |
+   +--------------------------------------+           +------------------------------------------+
+                ^    |                                                            |
+                |    |                                                            |
+                |    |           $ git clone git@github.com:YOURACCOUNT/ddskk.git | 
+                |    |                                                            |
+                |    |                                                            V
+                |    |                                    +-----------------------------------+
+                |    +----------------------------------> | local   (mastarブランチ)           |      
+                |     $ git pull upstream master:master   |   ->   手元の PC                   |
+                |                                         +-----------------------------------+
+                |                                                |
+                |                                                | $ git branch REFACTOR
+                |                                                | $ git checkout REFACTOR
+                |                                                |    (REFACTORは例としてつけた名称です)
+                |                                                V
+                |                                         +-----------------------------------+
+                |                                         | local  (REFACTORブランチ)          |
+                |                                         |   改良作業はここで行う               |
+                |                                         |   改良後 git add -u && git commit  |
+                |                                         +-----------------------------------+
+                |                                                |
+                |                                                | $ git push origin REFACTOR:REFACTOR
+                |                                                |
+                |                                                V
+                |                                     +------------------------------------------+
+                +------------------------------------ | origin  (REFACTORブランチ)                |
+                    (pull-request)                    |  -> git@github.com:YOURACCOUNT/ddskk.git |
+                                                      +------------------------------------------+
+</pre>
+
 
 <h3><a name="get_git"></a>2.2. git の入手方法(UN*X環境)</h3>
 
