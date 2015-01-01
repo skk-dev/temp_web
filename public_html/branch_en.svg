@@ -4,13 +4,13 @@
 <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
      y="0px" width="547.446px" height="520.885px" viewBox="0 0 547.446 520.885" enable-background="new 0 0 547.446 520.885"
      xml:space="preserve">
-<rect x="0.4" y="0.4" fill="none" stroke="#000000" stroke-width="0.8" width="208" height="62.855"/>
+<rect x="0.4" y="0.4" fill="none" stroke="red" stroke-width="0.8" width="208" height="62.855"/>
 <text transform="matrix(1 0 0 1 7.2549 27.4023)">
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">upstream</tspan>
 <tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; https://github.com/skk-dev/ddskk</tspan>
 </text>
 <g>
-	<rect x="276.668" y="0.4" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<rect x="276.668" y="0.4" fill="none" stroke="red" stroke-width="0.8" width="232.355" height="62.855"/>
 	<g>
 		<text transform="matrix(1 0 0 1 284.8623 27.4019)">
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">origin (master blanch)</tspan>
@@ -26,7 +26,7 @@
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git pull upstream master:master</tspan>
 </text>
 <g>
-	<rect x="276.668" y="152.81" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<rect x="276.668" y="152.81" fill="none" stroke="blue" stroke-width="1.0" width="232.355" height="62.855"/>
 	<text transform="matrix(1 0 0 1 284.8623 179.9844)">
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">local (master branch)</tspan>
 <tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; on your PC</tspan>
@@ -41,7 +41,7 @@
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="10">$ git push origin REFACTOR:REFACTOR</tspan>
 </text>
 <g>
-	<rect x="276.668" y="457.63" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.854"/>
+	<rect x="276.668" y="457.63" fill="none" stroke="red" stroke-width="0.8" width="232.355" height="62.854"/>
 	<text transform="matrix(1 0 0 1 284.8623 485.3267)">
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">origin (REFACTOR branch)</tspan>
 <tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11">-&gt; git@github.com:YOURACCOUNT/ddskk.git</tspan>
@@ -75,7 +75,7 @@
 	<polygon points="296.778,457.63 292.714,447.681 296.778,450.042 300.843,447.681 	"/>
 </g>
 <g>
-	<rect x="276.668" y="305.22" fill="none" stroke="#000000" stroke-width="0.8" width="232.355" height="62.855"/>
+	<rect x="276.668" y="305.22" fill="none" stroke="blue" stroke-width="1.0" width="232.355" height="62.855"/>
 	<text transform="matrix(1 0 0 1 284.8623 325.019)">
 <tspan x="0" y="0" font-family="'CairoFont-0-0'" font-size="11">local (REFACTOR branch)</tspan>
 <tspan x="0" y="14" font-family="'CairoFont-0-0'" font-size="11"> changes are given here.</tspan>
