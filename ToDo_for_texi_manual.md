@@ -10,3 +10,8 @@
 | github へ移行したため、そもそも CVSROOT/loginfo が発動しない | cron で定期的に cvswork.sh を起動 | 許可が必要かも。当面は手動で起動 |
 | そもそも、WEB版マニュアルの必要性 | 文字化けしたままでも良いのでは | 現状のまま（euc エンコードである旨の注意書きを追加） or<br>WEB版マニュアルの廃止 |
 | texi2html-1.82/5.0 でも一部文字化け | info や html を生成できる他の手法 | org-mode |
+
+##参考
+* http://mail.ring.gr.jp/skk/201501/msg00073.html
+
+* http://mail.ring.gr.jp/skk/201501/msg00074.html
